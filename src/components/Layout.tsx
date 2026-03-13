@@ -1,5 +1,5 @@
 import { Link, useOutlet, useLocation } from "react-router-dom";
-import { Mail, Menu, X, Home as HomeIcon, Image, User, Tag, Calendar, ChevronDown, Instagram, Linkedin } from "lucide-react";
+import { Mail, Menu, X, Home as HomeIcon, Image, User, Tag, Calendar, ChevronDown, Instagram, Linkedin, Moon, Sun } from "lucide-react";
 import { ShutterTransition } from "./ShutterTransition";
 import { cn } from "../lib/utils";
 import { useEffect, useState } from "react";
@@ -12,6 +12,7 @@ export function Layout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isWorkDropdownOpen, setIsWorkDropdownOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +36,14 @@ export function Layout() {
     setIsMobileMenuOpen(false);
   }, [location]);
 
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
   const navItems = [
     { name: "Home", path: "/", icon: HomeIcon },
     { name: "Work", path: "/work", icon: Image },
@@ -44,16 +53,16 @@ export function Layout() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#EEF4EC] text-zinc-900 font-sans selection:bg-orange-600 selection:text-white">
+    <div className="min-h-screen bg-surface text-text font-sans selection:bg-primary selection:text-surface">
       <header 
         className={cn(
-            "fixed top-0 left-0 w-full z-40 px-8 transition-all duration-300",
-            isScrolled ? "bg-[#EEF4EC]/90 backdrop-blur-md border-b border-zinc-100 py-3 text-zinc-900" : "bg-transparent text-zinc-900 py-5"
+            "fixed top-0 left-0 w-full z-40 px-8 transition-all duration-300 backdrop-blur-md border-b border-text/10 text-text",
+            isScrolled ? "bg-white/90 dark:bg-surface/90 py-2" : "bg-white/35 dark:bg-surface/35 py-3"
           )}
         >
           <div className="w-full flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 rounded-[2px]">
-              <span className="font-bold text-lg tracking-tighter uppercase">Ben White <span className="text-orange-600">Photography</span></span>
+            <Link to="/" className="flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-[2px]">
+              <span className="font-bold text-lg tracking-tighter uppercase">Ben White <span className="text-primary">Photography</span></span>
             </Link>
             
             <nav className="hidden md:flex items-center gap-4">
@@ -67,8 +76,8 @@ export function Layout() {
                       <Link
                         to={item.path}
                         className={cn(
-                          "flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 rounded-[2px] px-1.5 py-1",
-                          isActive || isWorkDropdownOpen ? "text-orange-600" : "text-zinc-900 hover:text-orange-600",
+                          "flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-[2px] px-1.5 py-1",
+                          isActive || isWorkDropdownOpen ? "text-primary" : "text-text hover:text-primary",
                           isActive && "underline underline-offset-4"
                         )}
                         onClick={() => setIsWorkDropdownOpen(false)}
@@ -84,13 +93,13 @@ export function Layout() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 10 }}
-                            className="absolute top-full left-0 mt-2 w-48 bg-[#EEF4EC] border border-zinc-100 shadow-xl rounded-[2px] py-2 flex flex-col z-50"
+                            className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-surface border border-text/10 shadow-xl rounded-[2px] py-2 flex flex-col z-50"
                           >
                             {projects.map(p => (
                               <Link 
                                 key={p.id} 
                                 to={`/work/${p.id}`} 
-                                className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-zinc-600 hover:bg-[#e4eadf] hover:text-orange-600 transition-colors"
+                                className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-text/70 hover:bg-surface-alt hover:text-primary transition-colors"
                                 onClick={() => setIsWorkDropdownOpen(false)}
                               >
                                 {p.title}
@@ -108,8 +117,8 @@ export function Layout() {
                     key={item.name}
                     to={item.path}
                     className={cn(
-                      "flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest hover:text-orange-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 rounded-[2px] px-1.5 py-1",
-                      isActive ? "text-orange-600 underline underline-offset-4" : "text-zinc-900"
+                      "flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-[2px] px-1.5 py-1",
+                      isActive ? "text-primary underline underline-offset-4" : "text-text"
                     )}
                   >
                     <Icon className="w-3.5 h-3.5" strokeWidth={2} fill={isActive ? "currentColor" : "none"} />
@@ -117,16 +126,33 @@ export function Layout() {
                   </Link>
                 );
               })}
+              
+              <button
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className="ml-2 p-1.5 text-text hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-[2px]"
+                aria-label="Toggle dark mode"
+              >
+                {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
             </nav>
 
-            <button 
-              className="md:hidden p-2 text-zinc-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 rounded-[2px]"
-              onClick={() => setIsMobileMenuOpen(true)}
-              aria-label="Open menu"
-              aria-expanded={isMobileMenuOpen}
-            >
-              <Menu className="w-5 h-5" />
-            </button>
+            <div className="md:hidden flex items-center gap-2">
+              <button
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className="p-2 text-text hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-[2px]"
+                aria-label="Toggle dark mode"
+              >
+                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </button>
+              <button 
+                className="p-2 text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-[2px]"
+                onClick={() => setIsMobileMenuOpen(true)}
+                aria-label="Open menu"
+                aria-expanded={isMobileMenuOpen}
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </header>
 
@@ -136,13 +162,13 @@ export function Layout() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="fixed inset-0 z-50 bg-[#EEF4EC] text-zinc-900 flex flex-col items-center justify-center"
+              className="fixed inset-0 z-50 bg-surface text-text flex flex-col items-center justify-center"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation menu"
             >
               <button 
-                className="absolute top-6 right-6 p-2 text-zinc-500 hover:text-zinc-900 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 rounded-[2px]"
+                className="absolute top-6 right-6 p-2 text-text/60 hover:text-text transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-[2px]"
                 onClick={() => setIsMobileMenuOpen(false)}
                 aria-label="Close menu"
               >
@@ -162,8 +188,8 @@ export function Layout() {
                             to={item.path}
                             onClick={() => setIsMobileMenuOpen(false)}
                             className={cn(
-                              "flex items-center gap-3 text-3xl font-black uppercase tracking-tighter transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 rounded-[2px] pl-2 py-1",
-                              isActive || isWorkDropdownOpen ? "text-orange-600" : "text-zinc-900 hover:text-orange-600",
+                              "flex items-center gap-3 text-3xl font-black uppercase tracking-tighter transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-[2px] pl-2 py-1",
+                              isActive || isWorkDropdownOpen ? "text-primary" : "text-text hover:text-primary",
                               isActive && "underline underline-offset-8"
                             )}
                           >
@@ -173,8 +199,8 @@ export function Layout() {
                           <button 
                             onClick={() => setIsWorkDropdownOpen(!isWorkDropdownOpen)}
                             className={cn(
-                              "p-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 rounded-[2px]",
-                              isActive || isWorkDropdownOpen ? "text-orange-600" : "text-zinc-900 hover:text-orange-600"
+                              "p-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-[2px]",
+                              isActive || isWorkDropdownOpen ? "text-primary" : "text-text hover:text-primary"
                             )}
                           >
                             <ChevronDown className={cn("w-8 h-8 transition-transform", isWorkDropdownOpen && "rotate-180")} />
@@ -193,7 +219,7 @@ export function Layout() {
                                   key={p.id} 
                                   to={`/work/${p.id}`} 
                                   onClick={() => setIsMobileMenuOpen(false)}
-                                  className="text-xl font-bold uppercase tracking-tighter text-zinc-600 hover:text-orange-600 transition-colors"
+                                  className="text-xl font-bold uppercase tracking-tighter text-text/70 hover:text-primary transition-colors"
                                 >
                                   {p.title}
                                 </Link>
@@ -211,8 +237,8 @@ export function Layout() {
                       to={item.path}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={cn(
-                        "flex items-center gap-3 text-3xl font-black uppercase tracking-tighter hover:text-orange-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 rounded-[2px] px-2",
-                        isActive ? "text-orange-600 underline underline-offset-8" : "text-zinc-900"
+                        "flex items-center gap-3 text-3xl font-black uppercase tracking-tighter hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-[2px] px-2",
+                        isActive ? "text-primary underline underline-offset-8" : "text-text"
                       )}
                     >
                       <Icon className="w-8 h-8" strokeWidth={2.5} fill={isActive ? "currentColor" : "none"} />
@@ -231,18 +257,18 @@ export function Layout() {
           </ShutterTransition>
         </main>
 
-        <footer className="bg-[#EEF4EC] text-zinc-500 py-12 border-t border-zinc-100 px-8">
+        <footer className="bg-surface text-text/60 py-12 border-t border-text/10 px-8">
           <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex flex-col items-center md:items-start gap-6">
               <div className="flex flex-col items-center md:items-start gap-2">
-                <span className="font-bold text-lg tracking-tighter uppercase text-zinc-900">Ben White <span className="text-orange-600">Photography</span></span>
+                <span className="font-bold text-lg tracking-tighter uppercase text-text">Ben White <span className="text-primary">Photography</span></span>
                 <p className="text-sm">&copy; {new Date().getFullYear()} Ben White Photography. All rights reserved.</p>
               </div>
               <div className="flex items-center gap-5">
-                <a href="https://instagram.com/benjah_photography" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-orange-600 transition-colors" aria-label="Instagram">
+                <a href="https://instagram.com/benjah_photography" target="_blank" rel="noopener noreferrer" className="text-text/50 hover:text-primary transition-colors" aria-label="Instagram">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-orange-600 transition-colors" aria-label="LinkedIn">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-text/50 hover:text-primary transition-colors" aria-label="LinkedIn">
                   <Linkedin className="w-5 h-5" />
                 </a>
               </div>
@@ -250,11 +276,11 @@ export function Layout() {
             
             <div className="flex flex-col items-center md:items-end gap-6 md:pr-32">
               <div className="flex flex-wrap justify-center md:justify-end items-center gap-4 md:gap-6">
-                <Link to="/" className="text-xs font-bold uppercase tracking-widest hover:text-orange-600 transition-colors">Home</Link>
-                <Link to="/work" className="text-xs font-bold uppercase tracking-widest hover:text-orange-600 transition-colors">Work</Link>
-                <Link to="/about" className="text-xs font-bold uppercase tracking-widest hover:text-orange-600 transition-colors">About</Link>
-                <Link to="/pricing" className="text-xs font-bold uppercase tracking-widest hover:text-orange-600 transition-colors">Pricing</Link>
-                <Link to="/contact" className="text-xs font-bold uppercase tracking-widest hover:text-orange-600 transition-colors">Contact</Link>
+                <Link to="/" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Home</Link>
+                <Link to="/work" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Work</Link>
+                <Link to="/about" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">About</Link>
+                <Link to="/pricing" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Pricing</Link>
+                <Link to="/contact" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Contact</Link>
               </div>
             </div>
           </div>
@@ -263,7 +289,7 @@ export function Layout() {
         {/* FAB for Booking */}
         <a
           href="mailto:BenWhiteIV@gmail.com?subject=Photography%20Inquiry"
-          className="fixed bottom-8 right-8 z-40 flex items-center justify-center gap-2 bg-orange-600 text-[#E4EADF] p-4 md:px-6 md:py-4 rounded-full md:rounded-[2px] hover:bg-orange-700 transition-all duration-300 font-bold uppercase tracking-wider text-sm group focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-600/50 shadow-lg"
+          className="fixed bottom-8 right-8 z-40 flex items-center justify-center gap-2 bg-primary text-surface p-4 md:px-6 md:py-4 rounded-full md:rounded-[2px] hover:bg-primary-hover transition-all duration-300 font-bold uppercase tracking-wider text-sm group focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 shadow-lg"
           aria-label="Email Ben White to Book Now"
         >
           <Calendar className="w-6 h-6 md:w-5 md:h-5 group-hover:-rotate-12 transition-transform" />

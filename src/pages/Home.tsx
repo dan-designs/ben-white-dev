@@ -20,7 +20,7 @@ export function Home() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative min-h-screen w-full overflow-hidden bg-[#e4eadf]">
+      <section className="relative min-h-screen w-full overflow-hidden bg-surface-alt">
         <motion.div 
           className="absolute inset-0 w-full h-full"
           style={{ y }}
@@ -37,9 +37,9 @@ export function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl text-[#E4EADF] bg-orange-600 px-4 py-2 rounded-[2px] font-medium mb-6 max-w-md inline-block"
+            className="text-lg md:text-xl text-surface bg-[#1E261F] px-4 py-2 rounded-[2px] font-medium mb-6 inline-block"
           >
-            Capturing moments through digital & film.
+            Capturing your moments through digital & film.
           </motion.p>
 
           <motion.div 
@@ -51,32 +51,21 @@ export function Home() {
             {services.map((service) => (
               <div
                 key={service}
-                className="text-2xl md:text-4xl font-normal uppercase tracking-wider hover:text-orange-600 transition-colors cursor-default text-zinc-800"
+                className="text-2xl md:text-4xl font-normal uppercase tracking-wider hover:text-primary transition-colors cursor-default text-text/90"
               >
                 {service}
               </div>
             ))}
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-8"
-          >
-            <Link to="/pricing" className="inline-block bg-zinc-900 text-[#E4EADF] px-6 py-3 rounded-[2px] font-bold uppercase tracking-wider text-sm hover:bg-orange-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 focus-visible:ring-offset-2">
-              View Pricing & Services
-            </Link>
-          </motion.div>
         </div>
       </section>
 
       {/* Samples of Work */}
-      <section className="py-24 px-6 bg-[#EEF4EC]">
+      <section className="py-24 px-6 bg-surface">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-zinc-900">Selected Work</h2>
-            <Link to="/work" className="hidden md:flex items-center gap-2 text-orange-600 font-bold uppercase tracking-wider hover:text-orange-700 transition-colors rounded-[2px] focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600">
+            <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-text">Selected Work</h2>
+            <Link to="/work" className="hidden md:flex items-center gap-2 text-primary font-bold uppercase tracking-wider hover:text-primary-hover transition-colors rounded-[2px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
               View All <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -85,17 +74,17 @@ export function Home() {
             {projects.slice(0, 3).map((project) => (
               <div 
                 key={project.id}
-                className="group relative overflow-hidden rounded-[2px] aspect-[4/5] bg-[#e4eadf]"
+                className="group relative overflow-hidden rounded-[2px] aspect-[4/5] bg-surface-alt"
               >
-                <Link to={`/work/${project.id}`} className="block w-full h-full focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-600 rounded-[2px]">
+                <Link to={`/work/${project.id}`} className="block w-full h-full focus:outline-none focus-visible:ring-4 focus-visible:ring-primary rounded-[2px]">
                   <img 
                     src={project.image} 
                     alt={project.title} 
                     className="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-80"
                   />
-                  <div className="absolute inset-0 bg-[#EEF4EC]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                    <h3 className="text-zinc-900 text-2xl font-bold mb-2">{project.title}</h3>
-                    <p className="text-orange-600 font-bold text-sm uppercase tracking-wider">{project.tags.join(' • ')}</p>
+                  <div className="absolute inset-0 bg-surface/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                    <h3 className="text-text text-2xl font-bold mb-2">{project.title}</h3>
+                    <p className="text-primary font-bold text-sm uppercase tracking-wider">{project.tags.join(' • ')}</p>
                   </div>
                 </Link>
               </div>
@@ -103,7 +92,7 @@ export function Home() {
           </div>
           
           <div className="mt-8 md:hidden">
-            <Link to="/work" className="flex items-center justify-center gap-2 text-orange-600 font-bold uppercase tracking-wider hover:text-orange-700 transition-colors rounded-[2px] focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600">
+            <Link to="/work" className="flex items-center justify-center gap-2 text-primary font-bold uppercase tracking-wider hover:text-primary-hover transition-colors rounded-[2px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
               View All <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -111,13 +100,13 @@ export function Home() {
       </section>
 
       {/* Clients & Quotes */}
-      <section className="py-24 px-6 bg-[#EEF4EC]">
+      <section className="py-24 px-6 bg-surface">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-16 text-center text-zinc-900">Trusted By</h2>
+          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-16 text-center text-text">Trusted By</h2>
           
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 mb-24 opacity-50 hover:opacity-100 transition-opacity duration-500">
-            {projects.map(p => (
-              <Link key={p.id} to={`/work/${p.id}`} className="text-xl md:text-2xl font-black uppercase tracking-tighter text-zinc-500 hover:text-orange-600 transition-colors rounded-[2px] focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 px-2">
+            {projects.filter(p => p.id !== 'headshots-portraits').map(p => (
+              <Link key={p.id} to={`/work/${p.id}`} className="text-xl md:text-2xl font-black uppercase tracking-tighter text-text/60 hover:text-primary transition-colors rounded-[2px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary px-2">
                 {p.title}
               </Link>
             ))}
@@ -127,11 +116,11 @@ export function Home() {
             {quotes.map((quote, i) => (
               <div 
                 key={i}
-                className="bg-[#e4eadf] p-8 rounded-[2px] border border-zinc-200 relative"
+                className="bg-surface-alt p-8 rounded-[2px] border border-text/20 relative"
               >
-                <Quote className="w-10 h-10 text-orange-600/20 absolute top-6 left-6" />
-                <p className="text-zinc-500 text-lg italic relative z-10 mt-8 mb-6">"{quote.text}"</p>
-                <p className="text-zinc-900 font-bold uppercase text-sm tracking-wider">— {quote.author}</p>
+                <Quote className="w-10 h-10 text-primary/20 absolute top-6 left-6" />
+                <p className="text-text/60 text-lg italic relative z-10 mt-8 mb-6">"{quote.text}"</p>
+                <p className="text-text font-bold uppercase text-sm tracking-wider">— {quote.author}</p>
               </div>
             ))}
           </div>
