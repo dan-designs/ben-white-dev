@@ -37,7 +37,7 @@ export function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl text-white bg-orange-600 px-4 py-2 rounded-[2px] font-medium mb-6 max-w-md inline-block"
+            className="text-lg md:text-xl text-[#E4EADF] bg-orange-600 px-4 py-2 rounded-[2px] font-medium mb-6 max-w-md inline-block"
           >
             Capturing moments through digital & film.
           </motion.p>
@@ -51,7 +51,7 @@ export function Home() {
             {services.map((service) => (
               <div
                 key={service}
-                className="text-2xl md:text-4xl font-light uppercase tracking-wider hover:text-orange-600 transition-colors cursor-default text-zinc-800"
+                className="text-2xl md:text-4xl font-normal uppercase tracking-wider hover:text-orange-600 transition-colors cursor-default text-zinc-800"
               >
                 {service}
               </div>
@@ -64,7 +64,7 @@ export function Home() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-8"
           >
-            <Link to="/pricing" className="inline-block bg-zinc-900 text-white px-6 py-3 rounded-[2px] font-bold uppercase tracking-wider text-sm hover:bg-orange-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 focus-visible:ring-offset-2">
+            <Link to="/pricing" className="inline-block bg-zinc-900 text-[#E4EADF] px-6 py-3 rounded-[2px] font-bold uppercase tracking-wider text-sm hover:bg-orange-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 focus-visible:ring-offset-2">
               View Pricing & Services
             </Link>
           </motion.div>

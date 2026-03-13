@@ -5,6 +5,8 @@
   --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --color-paper: #EEF4EC;
   --color-paper-dark: #e4eadf;
+  --color-orange-600: #002859;
+  --color-orange-700: #001a3b;
 }
 
 body {

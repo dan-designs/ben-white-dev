@@ -47,11 +47,11 @@ export function Layout() {
     <div className="min-h-screen bg-[#EEF4EC] text-zinc-900 font-sans selection:bg-orange-600 selection:text-white">
       <header 
         className={cn(
-            "fixed top-0 left-0 w-full z-40 px-6 transition-all duration-300",
+            "fixed top-0 left-0 w-full z-40 px-8 transition-all duration-300",
             isScrolled ? "bg-[#EEF4EC]/90 backdrop-blur-md border-b border-zinc-100 py-3 text-zinc-900" : "bg-transparent text-zinc-900 py-5"
           )}
         >
-          <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="w-full flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 rounded-[2px]">
               <span className="font-bold text-lg tracking-tighter uppercase">Ben White <span className="text-orange-600">Photography</span></span>
             </Link>
@@ -67,7 +67,7 @@ export function Layout() {
                       <Link
                         to={item.path}
                         className={cn(
-                          "flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 rounded-[2px] px-1.5 py-1",
+                          "flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 rounded-[2px] px-1.5 py-1",
                           isActive || isWorkDropdownOpen ? "text-orange-600" : "text-zinc-900 hover:text-orange-600",
                           isActive && "underline underline-offset-4"
                         )}
@@ -90,7 +90,7 @@ export function Layout() {
                               <Link 
                                 key={p.id} 
                                 to={`/work/${p.id}`} 
-                                className="px-4 py-2 text-xs font-medium uppercase tracking-wider text-zinc-600 hover:bg-[#e4eadf] hover:text-orange-600 transition-colors"
+                                className="px-4 py-2 text-xs font-bold uppercase tracking-wider text-zinc-600 hover:bg-[#e4eadf] hover:text-orange-600 transition-colors"
                                 onClick={() => setIsWorkDropdownOpen(false)}
                               >
                                 {p.title}
@@ -108,7 +108,7 @@ export function Layout() {
                     key={item.name}
                     to={item.path}
                     className={cn(
-                      "flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest hover:text-orange-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 rounded-[2px] px-1.5 py-1",
+                      "flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest hover:text-orange-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-600 rounded-[2px] px-1.5 py-1",
                       isActive ? "text-orange-600 underline underline-offset-4" : "text-zinc-900"
                     )}
                   >
@@ -231,8 +231,8 @@ export function Layout() {
           </ShutterTransition>
         </main>
 
-        <footer className="bg-[#EEF4EC] text-zinc-500 py-12 border-t border-zinc-100">
-          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+        <footer className="bg-[#EEF4EC] text-zinc-500 py-12 border-t border-zinc-100 px-8">
+          <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex flex-col items-center md:items-start gap-6">
               <div className="flex flex-col items-center md:items-start gap-2">
                 <span className="font-bold text-lg tracking-tighter uppercase text-zinc-900">Ben White <span className="text-orange-600">Photography</span></span>
@@ -263,7 +263,7 @@ export function Layout() {
         {/* FAB for Booking */}
         <a
           href="mailto:BenWhiteIV@gmail.com?subject=Photography%20Inquiry"
-          className="fixed bottom-8 right-8 z-40 flex items-center justify-center gap-2 bg-orange-600 text-white p-4 md:px-6 md:py-4 rounded-full md:rounded-[2px] hover:bg-orange-700 transition-all duration-300 font-bold uppercase tracking-wider text-sm group focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-600/50 shadow-lg"
+          className="fixed bottom-8 right-8 z-40 flex items-center justify-center gap-2 bg-orange-600 text-[#E4EADF] p-4 md:px-6 md:py-4 rounded-full md:rounded-[2px] hover:bg-orange-700 transition-all duration-300 font-bold uppercase tracking-wider text-sm group focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-600/50 shadow-lg"
           aria-label="Email Ben White to Book Now"
         >
           <Calendar className="w-6 h-6 md:w-5 md:h-5 group-hover:-rotate-12 transition-transform" />
