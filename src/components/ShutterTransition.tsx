@@ -51,7 +51,7 @@ export function ShutterTransition({ children }: { children: ReactNode }) {
                   height: '200vmax',
                   left: '-100vmax', // Center horizontally relative to the rotated container
                   top: '0',         // Top edge is at the center
-                  borderTop: '2px solid var(--accent)',
+                  borderTop: '2px solid var(--primary)',
                   boxShadow: '0 -10px 30px rgba(0,0,0,0.5)'
                 }}
                 initial={false}

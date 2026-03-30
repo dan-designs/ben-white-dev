@@ -35,11 +35,11 @@ export function Contact() {
     <div className="min-h-screen bg-surface pt-32 pb-24 px-6 flex flex-col items-center">
       <div className="w-full max-w-lg mx-auto flex flex-col items-center">
         
-        <div className="w-32 h-32 rounded-[2px] overflow-hidden mb-6 border-4 border-surface-alt">
+        <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-surface-alt">
           <img 
-            src="https://res.cloudinary.com/datad8tms/image/upload/v1773329792/Photo_courtesy_of_Kai_Eason_g96irh.webp" 
+            src="https://res.cloudinary.com/datad8tms/image/upload/v1774875328/Ben_White_J._Chesney_4_g8dul0.jpg" 
             alt="Benjamin White" 
-            className="w-full h-full object-cover grayscale"
+            className="w-full h-full object-cover"
           />
         </div>
         
@@ -47,11 +47,11 @@ export function Contact() {
           Ben White Photography
         </h1>
         
-        <p className="text-text/60 mb-2 flex items-center gap-2 font-medium">
-          <MapPin className="w-4 h-4" /> Richmond, Virginia
+        <p className="text-text/80 mb-2 flex items-center gap-2 font-medium">
+          <MapPin className="w-4 h-4" aria-hidden="true" /> Richmond, Virginia
         </p>
         
-        <p className="text-text/60 text-center mb-10 max-w-sm">
+        <p className="text-text/80 text-center mb-10 max-w-sm">
           Portrait, Location, Wedding, and Event Photography. Let's create something beautiful together.
         </p>
 
@@ -73,18 +73,18 @@ export function Contact() {
             >
               <div className={`
                 flex items-center justify-center w-12 h-12 rounded-[2px] mr-4 transition-colors
-                ${link.primary ? "bg-surface/20" : "bg-surface text-text/60 group-hover:bg-surface-alt"}
+                ${link.primary ? "bg-surface/20" : "bg-surface text-text/80 group-hover:bg-surface-alt"}
               `}>
                 {link.icon}
               </div>
               <div className="flex-grow">
                 <h2 className="font-bold text-lg">{link.title}</h2>
-                <p className={`text-sm ${link.primary ? "text-surface/80" : "text-text/60"}`}>
+                <p className={`text-sm ${link.primary ? "text-surface/80" : "text-text/80"}`}>
                   {link.description}
                 </p>
               </div>
               {link.external && (
-                <ExternalLink className={`w-5 h-5 opacity-50 ${link.primary ? "text-surface" : "text-text/60"}`} />
+                <ExternalLink className={`w-5 h-5 opacity-50 ${link.primary ? "text-surface" : "text-text/80"}`} aria-hidden="true" />
               )}
             </a>
           ))}

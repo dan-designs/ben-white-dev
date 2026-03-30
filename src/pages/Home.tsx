@@ -27,7 +27,8 @@ export function Home() {
         >
           <img 
             src="https://res.cloudinary.com/datad8tms/image/upload/v1773333119/Camera_bpdbus.png" 
-            alt="Hero Background" 
+            alt="" 
+            aria-hidden="true"
             className="w-full h-full object-cover opacity-[0.45] mix-blend-multiply grayscale"
           />
         </motion.div>
@@ -37,7 +38,7 @@ export function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl text-surface bg-[#1E261F] px-4 py-2 rounded-[2px] font-medium mb-6 inline-block"
+            className="text-lg md:text-xl text-[#F4F1EA] bg-[#1E261F] px-4 py-2 rounded-[2px] font-medium mb-6 inline-block"
           >
             Capturing your moments through digital & film.
           </motion.p>
@@ -51,7 +52,7 @@ export function Home() {
             {services.map((service) => (
               <div
                 key={service}
-                className="text-2xl md:text-4xl font-normal uppercase tracking-wider hover:text-primary transition-colors cursor-default text-text/90"
+                className="text-2xl md:text-4xl font-normal uppercase tracking-wider hover:text-primary transition-colors cursor-default text-text"
               >
                 {service}
               </div>
@@ -106,7 +107,7 @@ export function Home() {
           
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 mb-24 opacity-50 hover:opacity-100 transition-opacity duration-500">
             {projects.filter(p => p.id !== 'headshots-portraits').map(p => (
-              <Link key={p.id} to={`/work/${p.id}`} className="text-xl md:text-2xl font-black uppercase tracking-tighter text-text/60 hover:text-primary transition-colors rounded-[2px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary px-2">
+              <Link key={p.id} to={`/work/${p.id}`} className="text-xl md:text-2xl font-black uppercase tracking-tighter text-text/80 hover:text-primary transition-colors rounded-[2px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary px-2">
                 {p.title}
               </Link>
             ))}
@@ -119,7 +120,7 @@ export function Home() {
                 className="bg-surface-alt p-8 rounded-[2px] border border-text/20 relative"
               >
                 <Quote className="w-10 h-10 text-primary/20 absolute top-6 left-6" />
-                <p className="text-text/60 text-lg italic relative z-10 mt-8 mb-6">"{quote.text}"</p>
+                <p className="text-text/80 text-lg italic relative z-10 mt-8 mb-6">"{quote.text}"</p>
                 <p className="text-text font-bold uppercase text-sm tracking-wider">— {quote.author}</p>
               </div>
             ))}

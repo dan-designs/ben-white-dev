@@ -56,8 +56,8 @@ export function Layout() {
     <div className="min-h-screen bg-surface text-text font-sans selection:bg-primary selection:text-surface">
       <header 
         className={cn(
-            "fixed top-0 left-0 w-full z-40 px-8 transition-all duration-300 backdrop-blur-md border-b border-text/10 text-text",
-            isScrolled ? "bg-white/90 dark:bg-surface/90 py-2" : "bg-white/35 dark:bg-surface/35 py-3"
+            "fixed top-0 left-0 w-full z-40 px-8 transition-all duration-300 border-b border-text/10 text-text bg-white dark:bg-surface",
+            isScrolled ? "py-2 shadow-sm" : "py-3"
           )}
         >
           <div className="w-full flex items-center justify-between">
@@ -65,7 +65,7 @@ export function Layout() {
               <span className="font-bold text-lg tracking-tighter uppercase">Ben White <span className="text-primary">Photography</span></span>
             </Link>
             
-            <nav className="hidden md:flex items-center gap-4">
+            <nav className="hidden md:flex items-center gap-4" aria-label="Main Navigation">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.path || (item.name === "Work" && location.pathname.startsWith("/work"));
@@ -82,7 +82,7 @@ export function Layout() {
                         )}
                         onClick={() => setIsWorkDropdownOpen(false)}
                       >
-                        <Icon className="w-3.5 h-3.5" strokeWidth={2} fill={isActive ? "currentColor" : "none"} />
+                        <Icon className="w-3.5 h-3.5" strokeWidth={2} />
                         {item.name}
                         <ChevronDown className={cn("w-3.5 h-3.5 transition-transform", isWorkDropdownOpen && "rotate-180")} />
                       </Link>
@@ -121,7 +121,7 @@ export function Layout() {
                       isActive ? "text-primary underline underline-offset-4" : "text-text"
                     )}
                   >
-                    <Icon className="w-3.5 h-3.5" strokeWidth={2} fill={isActive ? "currentColor" : "none"} />
+                    <Icon className="w-3.5 h-3.5" strokeWidth={2} />
                     {item.name}
                   </Link>
                 );
@@ -175,7 +175,7 @@ export function Layout() {
                 <X className="w-8 h-8" />
               </button>
               
-              <nav className="flex flex-col items-center gap-6 w-full overflow-y-auto max-h-[70vh] pb-8">
+              <nav className="flex flex-col items-center gap-6 w-full overflow-y-auto max-h-[70vh] pb-8" aria-label="Mobile Navigation">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = location.pathname === item.path || (item.name === "Work" && location.pathname.startsWith("/work"));
@@ -193,7 +193,7 @@ export function Layout() {
                               isActive && "underline underline-offset-8"
                             )}
                           >
-                            <Icon className="w-8 h-8" strokeWidth={2.5} fill={isActive ? "currentColor" : "none"} />
+                            <Icon className="w-8 h-8" strokeWidth={2.5} />
                             {item.name}
                           </Link>
                           <button 
@@ -241,7 +241,7 @@ export function Layout() {
                         isActive ? "text-primary underline underline-offset-8" : "text-text"
                       )}
                     >
-                      <Icon className="w-8 h-8" strokeWidth={2.5} fill={isActive ? "currentColor" : "none"} />
+                      <Icon className="w-8 h-8" strokeWidth={2.5} />
                       {item.name}
                     </Link>
                   );
@@ -257,7 +257,7 @@ export function Layout() {
           </ShutterTransition>
         </main>
 
-        <footer className="bg-surface text-text/60 py-12 border-t border-text/10 px-8">
+        <footer className="bg-surface text-text/80 py-12 border-t border-text/10 px-8">
           <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex flex-col items-center md:items-start gap-6">
               <div className="flex flex-col items-center md:items-start gap-2">
@@ -265,10 +265,10 @@ export function Layout() {
                 <p className="text-sm">&copy; {new Date().getFullYear()} Ben White Photography. All rights reserved.</p>
               </div>
               <div className="flex items-center gap-5">
-                <a href="https://instagram.com/benjah_photography" target="_blank" rel="noopener noreferrer" className="text-text/50 hover:text-primary transition-colors" aria-label="Instagram">
+                <a href="https://instagram.com/benjah_photography" target="_blank" rel="noopener noreferrer" className="text-text/70 hover:text-primary transition-colors" aria-label="Instagram">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-text/50 hover:text-primary transition-colors" aria-label="LinkedIn">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-text/70 hover:text-primary transition-colors" aria-label="LinkedIn">
                   <Linkedin className="w-5 h-5" />
                 </a>
               </div>

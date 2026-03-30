@@ -59,7 +59,7 @@ export function Pricing() {
           <h1 className="text-5xl md:text-6xl font-black uppercase tracking-tighter text-text mb-4">
             Investment
           </h1>
-          <p className="text-xl text-text/60 max-w-2xl mx-auto">
+          <p className="text-xl text-text/80 max-w-2xl mx-auto">
             A broad range of photographic services tailored to your needs. 
             <br className="hidden md:block" />
             <span className="font-semibold text-primary">Please note: All prices are starting points. Contact me for a 100% accurate custom quote.</span>
@@ -78,7 +78,7 @@ export function Pricing() {
               <div className="text-primary font-serif italic text-xl mb-4">
                 {pkg.price}
               </div>
-              <p className="text-text/60 mb-8 flex-grow">
+              <p className="text-text/80 mb-8 flex-grow">
                 {pkg.description}
               </p>
               <ul className="space-y-3 mb-8">
@@ -103,7 +103,7 @@ export function Pricing() {
           <h2 className="text-2xl font-bold uppercase tracking-tight text-text mb-4">
             Don't see what you're looking for?
           </h2>
-          <p className="text-text/60 mb-6">
+          <p className="text-text/80 mb-6">
             I also offer custom packages for abstract photography, specific product shoots, and unique locations. Every project is different, and I'm happy to build a custom quote that fits your exact requirements.
           </p>
           <a 
