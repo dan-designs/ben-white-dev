@@ -35,10 +35,10 @@ export function Contact() {
             className="w-full h-full object-cover"
           />
         </div>
-        <p className="text-[10px] text-text/60 italic mb-6">
-           Photo credit <a href="https://justinchesney.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline">Justin Chesney</a>
+        <p className="text-xs text-text/60 italic mb-6">
+          Photo credit <a href="https://justinchesney.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline">Justin Chesney</a>
         </p>
-
+        
         <h1 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-text mb-2 text-center">
           Ben White Photography
         </h1>

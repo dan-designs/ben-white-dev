@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { projects } from "../data/projects";
@@ -8,21 +8,6 @@ export function Project() {
   const project = projects.find(p => p.id === projectId);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!lightboxOpen || !project) return;
-      if (e.key === 'Escape') {
-        closeLightbox();
-      } else if (e.key === 'ArrowRight') {
-        setCurrentImageIndex((prev) => (prev + 1) % project.gallery.length);
-      } else if (e.key === 'ArrowLeft') {
-        setCurrentImageIndex((prev) => (prev - 1 + project.gallery.length) % project.gallery.length);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [lightboxOpen, project?.gallery.length]);
 
   if (!project) {
     return (
@@ -42,15 +27,26 @@ export function Project() {
 
   const closeLightbox = () => setLightboxOpen(false);
 
-  const nextImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const nextImage = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     setCurrentImageIndex((prev) => (prev + 1) % project.gallery.length);
   };
 
-  const prevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const prevImage = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     setCurrentImageIndex((prev) => (prev - 1 + project.gallery.length) % project.gallery.length);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!lightboxOpen) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxOpen, project.gallery.length]);
 
   return (
     <div className="min-h-screen bg-surface pt-32 pb-24 px-6">

@@ -6,8 +6,6 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { projects } from "../data/projects";
 
-const sortedProjects = [...projects].sort((a, b) => a.title.localeCompare(b.title));
-
 export function Layout() {
   const location = useLocation();
   const outlet = useOutlet();
@@ -96,7 +94,7 @@ export function Layout() {
                             exit={{ opacity: 0, y: 10 }}
                             className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-surface border border-text/10 shadow-xl rounded-[2px] py-2 flex flex-col z-50"
                           >
-                            {sortedProjects.map(p => (
+                            {[...projects].sort((a,b) => a.title.localeCompare(b.title)).map(p => (
                               <Link 
                                 key={p.id} 
                                 to={`/work/${p.id}`} 
@@ -215,7 +213,7 @@ export function Layout() {
                               exit={{ opacity: 0, height: 0 }}
                               className="flex flex-col items-center gap-4 mt-6 overflow-hidden"
                             >
-                              {sortedProjects.map(p => (
+                              {[...projects].sort((a,b) => a.title.localeCompare(b.title)).map(p => (
                                 <Link 
                                   key={p.id} 
                                   to={`/work/${p.id}`} 
@@ -293,7 +291,7 @@ export function Layout() {
           aria-label="Email Ben White to Book Now"
         >
           <Calendar className="w-6 h-6 md:w-5 md:h-5 group-hover:-rotate-12 transition-transform" />
-          <span className="hidden md:inline">Email Me!</span>
+          <span className="hidden md:inline">Book Now!</span>
         </a>
     </div>
   );

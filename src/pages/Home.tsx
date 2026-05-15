@@ -52,7 +52,7 @@ export function Home() {
             {services.map((service) => (
               <div
                 key={service}
-                className="text-2xl md:text-4xl font-normal uppercase tracking-wider text-text"
+                className="text-2xl md:text-4xl font-normal uppercase tracking-wider hover:text-primary transition-colors cursor-default text-text"
               >
                 {service}
               </div>
