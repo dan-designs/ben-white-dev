@@ -8,7 +8,7 @@ export function Home() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]); // Reduced parallax
 
   const services = [
-    "PORTRAIT", "EVENT", "PRODUCT", "BLOG", "PRINTS", "WORK"
+    "PORTRAIT", "EVENT", "PRODUCT"
   ];
 
   const quotes = [
@@ -52,7 +52,7 @@ export function Home() {
             {services.map((service) => (
               <div
                 key={service}
-                className="text-2xl md:text-4xl font-normal uppercase tracking-wider hover:text-primary transition-colors cursor-default text-text"
+                className="text-2xl md:text-4xl font-normal uppercase tracking-wider text-text"
               >
                 {service}
               </div>

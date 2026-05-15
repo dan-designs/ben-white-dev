@@ -3,18 +3,11 @@ import { Mail, Phone, Instagram, Calendar, MapPin, ExternalLink } from "lucide-r
 export function Contact() {
   const links = [
     {
-      title: "Schedule a Session",
-      description: "View availability and book online",
-      icon: <Calendar className="w-6 h-6" />,
-      href: "https://app.squarespacescheduling.com/schedule.php?owner=24212360&appointmentType=27323236",
-      external: true,
-      primary: true
-    },
-    {
       title: "Email Me",
-      description: "BenWhiteIV@gmail.com",
+      description: "benjahphotography@gmail.com",
       icon: <Mail className="w-6 h-6" />,
-      href: "mailto:BenWhiteIV@gmail.com"
+      href: "mailto:benjahphotography@gmail.com",
+      primary: true
     },
     {
       title: "Call or Text",
@@ -24,9 +17,9 @@ export function Contact() {
     },
     {
       title: "Follow on Instagram",
-      description: "@benjah_photography",
+      description: "@benwhitephoto",
       icon: <Instagram className="w-6 h-6" />,
-      href: "https://instagram.com",
+      href: "https://www.instagram.com/benwhitephoto/",
       external: true
     }
   ];
@@ -35,14 +28,17 @@ export function Contact() {
     <div className="min-h-screen bg-surface pt-32 pb-24 px-6 flex flex-col items-center">
       <div className="w-full max-w-lg mx-auto flex flex-col items-center">
         
-        <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-surface-alt">
+        <div className="w-32 h-32 rounded-full overflow-hidden mb-2 border-4 border-surface-alt">
           <img 
-            src="https://res.cloudinary.com/datad8tms/image/upload/v1774875328/Ben_White_J._Chesney_4_g8dul0.jpg" 
+            src="https://res.cloudinary.com/datad8tms/image/upload/v1778863181/Ben_White_J._Chesney_4_kn4ydw.jpg" 
             alt="Benjamin White" 
             className="w-full h-full object-cover"
           />
         </div>
-        
+        <p className="text-[10px] text-text/60 italic mb-6">
+           Photo credit <a href="https://justinchesney.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline">Justin Chesney</a>
+        </p>
+
         <h1 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-text mb-2 text-center">
           Ben White Photography
         </h1>

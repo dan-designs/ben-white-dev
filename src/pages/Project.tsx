@@ -9,6 +9,21 @@ export function Project() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!lightboxOpen || !project) return;
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowRight') {
+        setCurrentImageIndex((prev) => (prev + 1) % project.gallery.length);
+      } else if (e.key === 'ArrowLeft') {
+        setCurrentImageIndex((prev) => (prev - 1 + project.gallery.length) % project.gallery.length);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxOpen, project?.gallery.length]);
+
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-surface-alt">
@@ -63,7 +78,7 @@ export function Project() {
             <div className="mt-12 hidden md:block">
               <h2 className="text-sm font-bold uppercase tracking-tight mb-4 text-text">Interested in working together?</h2>
               <a
-                href="mailto:BenWhiteIV@gmail.com?subject=Photography%20Inquiry"
+                href="mailto:benjahphotography@gmail.com?subject=Photography%20Inquiry"
                 className="inline-block bg-primary text-surface px-6 py-3 rounded-[2px] hover:bg-primary-hover transition-all duration-300 font-bold uppercase tracking-wider text-xs focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/50"
               >
                 Email Me
@@ -94,7 +109,7 @@ export function Project() {
         <div className="mt-16 text-center md:hidden">
           <h2 className="text-2xl font-bold uppercase tracking-tight mb-6 text-text">Interested in working together?</h2>
           <a
-            href="mailto:BenWhiteIV@gmail.com?subject=Photography%20Inquiry"
+            href="mailto:benjahphotography@gmail.com?subject=Photography%20Inquiry"
             className="inline-block bg-primary text-surface px-8 py-4 rounded-[2px] hover:bg-primary-hover transition-all duration-300 font-bold uppercase tracking-wider focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/50"
           >
             Email Me
