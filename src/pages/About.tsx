@@ -23,7 +23,7 @@ export function About() {
               <ul className="space-y-4 text-text/80">
                 <li className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-primary" />
-                  <a href="mailto:BenWhiteIV@gmail.com" className="hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-[2px] px-1 -ml-1">BenWhiteIV@gmail.com</a>
+                  <a href="mailto:benjahphotography@gmail.com" className="hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-[2px] px-1 -ml-1">benjahphotography@gmail.com</a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-primary" />
