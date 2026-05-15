@@ -8,7 +8,7 @@ export function Home() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]); // Reduced parallax
 
   const services = [
-    "Abstract", "Event", "Landscape", "Location", "Portrait", "Product", "Wedding"
+    "PORTRAIT", "EVENT", "PRODUCT", "BLOG", "PRINTS", "WORK"
   ];
 
   const quotes = [
@@ -26,19 +26,19 @@ export function Home() {
           style={{ y }}
         >
           <img 
-            src="https://res.cloudinary.com/datad8tms/image/upload/v1773333119/Camera_bpdbus.png" 
+            src="https://res.cloudinary.com/datad8tms/image/upload/v1778865344/hero_ffxjvm.webp" 
             alt="" 
             aria-hidden="true"
-            className="w-full h-full object-cover opacity-[0.45] mix-blend-multiply grayscale"
+            className="w-full h-full object-cover object-bottom opacity-[0.45] mix-blend-multiply grayscale"
           />
         </motion.div>
         
         <div className="absolute bottom-8 left-8 z-10 flex flex-col items-start">
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl text-[#F4F1EA] bg-[#1E261F] px-4 py-2 rounded-[2px] font-medium mb-6 inline-block"
+            className="text-lg md:text-xl text-[#F4F1EA] bg-[#B85D3F] dark:bg-[#9B462C] dark:text-[#E8E4DB] px-4 py-2 rounded-[2px] font-medium mb-6 inline-block"
           >
             Capturing your moments through digital & film.
           </motion.p>
@@ -81,7 +81,7 @@ export function Home() {
                   <img 
                     src={project.image} 
                     alt={project.title} 
-                    className="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-80"
+                    className="w-full h-full object-cover object-center transition-opacity duration-500 group-hover:opacity-80"
                   />
                   <div className="absolute inset-0 bg-surface/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
                     <h3 className="text-text text-2xl font-bold mb-2">{project.title}</h3>

@@ -51,7 +51,7 @@ export function Work() {
                   to={`/work/${project.id}`} 
                   className="inline-flex items-center gap-2 text-text font-bold uppercase tracking-wider group-hover:text-primary transition-colors self-start focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-[2px] px-1 -ml-1"
                 >
-                  View Project <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                  See More <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>

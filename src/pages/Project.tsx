@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { projects } from "../data/projects";
 
 export function Project() {
   const { projectId } = useParams();
   const project = projects.find(p => p.id === projectId);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   if (!project) {
     return (
@@ -16,6 +19,23 @@ export function Project() {
       </div>
     );
   }
+
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => setLightboxOpen(false);
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev + 1) % project.gallery.length);
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev - 1 + project.gallery.length) % project.gallery.length);
+  };
 
   return (
     <div className="min-h-screen bg-surface pt-32 pb-24 px-6">
@@ -56,7 +76,8 @@ export function Project() {
               {project.gallery.map((img, i) => (
                 <div
                   key={i}
-                  className="break-inside-avoid rounded-[2px] overflow-hidden bg-surface-alt"
+                  className="break-inside-avoid rounded-[2px] overflow-hidden bg-surface-alt cursor-pointer"
+                  onClick={() => openLightbox(i)}
                 >
                   <img 
                     src={img} 
@@ -80,6 +101,41 @@ export function Project() {
           </a>
         </div>
       </div>
+
+      {lightboxOpen && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+          onClick={closeLightbox}
+        >
+          <button 
+            onClick={closeLightbox}
+            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors focus:outline-none"
+          >
+            <X className="w-8 h-8" />
+          </button>
+          
+          <button 
+            onClick={prevImage}
+            className="absolute left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors focus:outline-none p-2"
+          >
+            <ChevronLeft className="w-10 h-10" />
+          </button>
+          
+          <img 
+            src={project.gallery[currentImageIndex]} 
+            alt={`Lightbox ${currentImageIndex}`}
+            className="max-w-full max-h-[85vh] object-contain ml-auto mr-auto"
+            onClick={(e) => e.stopPropagation()}
+          />
+          
+          <button 
+            onClick={nextImage}
+            className="absolute right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors focus:outline-none p-2"
+          >
+            <ChevronRight className="w-10 h-10" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

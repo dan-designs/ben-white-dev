@@ -48,7 +48,6 @@ export function Layout() {
     { name: "Home", path: "/", icon: HomeIcon },
     { name: "Work", path: "/work", icon: Image },
     { name: "About", path: "/about", icon: User },
-    { name: "Pricing", path: "/pricing", icon: Tag },
     { name: "Contact", path: "/contact", icon: Mail },
   ];
 
@@ -265,10 +264,10 @@ export function Layout() {
                 <p className="text-sm">&copy; {new Date().getFullYear()} Ben White Photography. All rights reserved.</p>
               </div>
               <div className="flex items-center gap-5">
-                <a href="https://instagram.com/benjah_photography" target="_blank" rel="noopener noreferrer" className="text-text/70 hover:text-primary transition-colors" aria-label="Instagram">
+                <a href="https://www.instagram.com/benwhitephoto/" target="_blank" rel="noopener noreferrer" className="text-text/70 hover:text-primary transition-colors" aria-label="Instagram">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-text/70 hover:text-primary transition-colors" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/ben-white-9aa26b53/" target="_blank" rel="noopener noreferrer" className="text-text/70 hover:text-primary transition-colors" aria-label="LinkedIn">
                   <Linkedin className="w-5 h-5" />
                 </a>
               </div>
@@ -279,7 +278,6 @@ export function Layout() {
                 <Link to="/" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Home</Link>
                 <Link to="/work" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Work</Link>
                 <Link to="/about" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">About</Link>
-                <Link to="/pricing" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Pricing</Link>
                 <Link to="/contact" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Contact</Link>
               </div>
             </div>

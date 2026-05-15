@@ -7,13 +7,16 @@ export function About() {
         <div className="flex flex-col md:flex-row gap-12 items-start">
           
           <div className="w-full md:w-1/3 shrink-0">
-            <div className="aspect-[4/5] rounded-[2px] overflow-hidden mb-6 bg-surface-alt">
+            <div className="aspect-[4/5] rounded-[2px] overflow-hidden mb-2 bg-surface-alt">
               <img 
-                src="https://res.cloudinary.com/datad8tms/image/upload/v1774875328/Ben_White_J._Chesney_4_g8dul0.jpg" 
+                src="https://res.cloudinary.com/datad8tms/image/upload/v1778863181/Ben_White_J._Chesney_4_kn4ydw.jpg" 
                 alt="Benjamin White" 
                 className="w-full h-full object-cover"
               />
             </div>
+            <p className="text-xs text-text/60 italic mb-6">
+              Photo credit <a href="https://justinchesney.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors underline">Justin Chesney</a>
+            </p>
             
             <div className="bg-surface-alt p-6 rounded-[2px] border border-text/10">
               <h3 className="font-bold uppercase tracking-wider text-text mb-4 text-sm">Contact Info</h3>
@@ -99,13 +102,13 @@ export function About() {
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="aspect-square sm:aspect-[4/5] rounded-[2px] overflow-hidden bg-surface-alt">
-                  <img src="https://res.cloudinary.com/datad8tms/image/upload/v1774875328/Ben_White_J._Chesney_3_fkdb5m.jpg" alt="Ben White Studio 1" className="w-full h-full object-cover" />
+                  <img src="https://res.cloudinary.com/datad8tms/image/upload/v1778863194/Ben_White_J._Chesney_2_zh6v5a.jpg" alt="Ben White Studio 1" className="w-full h-full object-cover" />
                 </div>
                 <div className="aspect-square sm:aspect-[4/5] rounded-[2px] overflow-hidden bg-surface-alt">
-                  <img src="https://res.cloudinary.com/datad8tms/image/upload/v1774875328/B.White_J.Chesney_ih1azv.jpg" alt="Ben White Studio 2" className="w-full h-full object-cover" />
+                  <img src="https://res.cloudinary.com/datad8tms/image/upload/v1778863154/Ben_White_J._Chesney_5_wibgce.png" alt="Ben White Studio 2" className="w-full h-full object-cover" />
                 </div>
                 <div className="aspect-square sm:aspect-[4/5] rounded-[2px] overflow-hidden bg-surface-alt">
-                  <img src="https://res.cloudinary.com/datad8tms/image/upload/v1774875347/Ben_White_J._Chesney_5_oxqfcz.png" alt="Ben White Studio 3" className="w-full h-full object-cover" />
+                  <img src="https://res.cloudinary.com/datad8tms/image/upload/v1778863187/Ben_White_J._Chesney_3_ak5lrr.jpg" alt="Ben White Studio 3" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
